@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dhanshri Shankhpal | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/*====================================================
+  ROOT & RESET
+====================================================*/
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#f7f8ff;
+  --surface:#ffffff;
+  --primary:#7c3aed;
+  --sky:#0ea5e9;
+  --grad:linear-gradient(135deg,#7c3aed,#0ea5e9);
+  --grad2:linear-gradient(135deg,#0ea5e9,#7c3aed);
+  --text:#18184a;
+  --muted:#5a6480;
+  --border:#e2e8f8;
+  --card:#fff;
+  --shadow:0 4px 32px rgba(124,58,237,0.10);
+  --radius:18px;
+  --fh:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/*====================================================
+  SCROLLBAR
+====================================================*/
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--grad);border-radius:99px}
+
+/*====================================================
+  NAV
+====================================================*/
+header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background:rgba(247,248,255,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.navbar{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 2rem;
+}
+.nav-logo{
+  font-family:var(--fh);font-size:1.6rem;font-weight:900;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-0.5px;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.88rem;font-weight:500;color:var(--muted);
+  position:relative;padding-bottom:3px;transition:color .2s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:2px;background:var(--grad);border-radius:2px;transition:width .3s;
+}
+.nav-links a:hover,
+.nav-links a.active{color:var(--primary)}
+.nav-links a:hover::after,
+.nav-links a.active::after{width:100%}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text)}
+.mobile-nav{
+  display:none;flex-direction:column;gap:.5rem;
+  padding:.8rem 2rem 1rem;background:var(--surface);
+  border-top:1px solid var(--border);
+}
+.mobile-nav a{font-weight:500;color:var(--muted);padding:.4rem 0;transition:color .2s}
+.mobile-nav a:hover{color:var(--primary)}
+.mobile-nav.open{display:flex}
+
+/*====================================================
+  BUTTONS
+====================================================*/
+.btn{
+  display:inline-block;padding:.75rem 1.8rem;border-radius:10px;
+  font-family:var(--fb);font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:all .25s;border:none;
+}
+.btn-primary{background:var(--grad);color:#fff}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(124,58,237,.35)}
+.btn-outline{
+  background:transparent;color:var(--primary);
+  border:2px solid var(--primary);
+}
+.btn-outline:hover{background:rgba(124,58,237,.07);transform:translateY(-3px)}
+.btn-sm{padding:.5rem 1.1rem;font-size:.82rem;border-radius:8px}
+.btn-ghost{
+  background:rgba(124,58,237,.08);color:var(--primary);
+  border:1px solid rgba(124,58,237,.2);
+}
+.btn-ghost:hover{background:rgba(124,58,237,.15)}
+
+/*====================================================
+  SECTION COMMON
+====================================================*/
+section{padding:5.5rem 2rem;max-width:1200px;margin:0 auto}
+.sec-full{max-width:100%;padding:5.5rem 0}
+.sec-full>div{max-width:1200px;margin:0 auto;padding:0 2rem}
+.sec-label{
+  font-size:.72rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--sky);font-weight:700;margin-bottom:.6rem;
+}
+.sec-title{
+  font-family:var(--fh);
+  font-size:clamp(1.9rem,4vw,2.8rem);
+  font-weight:900;letter-spacing:-.5px;margin-bottom:3rem;
+}
+.sec-title em{
+  font-style:italic;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/*====================================================
+  HERO
+====================================================*/
+#home{
+  min-height:100vh;display:flex;align-items:center;
+  padding:7rem 2rem 4rem;gap:3rem;flex-wrap:wrap;
+  max-width:1200px;margin:0 auto;
+  position:relative;overflow:hidden;
+}
+.hero-blob{
+  position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1;
+}
+.blob1{width:500px;height:500px;background:rgba(124,58,237,.09);top:-100px;right:-120px}
+.blob2{width:380px;height:380px;background:rgba(14,165,233,.08);bottom:-80px;left:-80px}
+
+.hero-left{flex:1;min-width:280px;animation:fadeUp .8s ease both}
+.hero-right{
+  flex:0 0 300px;display:flex;justify-content:center;align-items:center;
+  animation:fadeUp 1s ease both;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.75rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--primary);font-weight:700;margin-bottom:1.4rem;
+}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--grad)}
+
+.hero-name{
+  font-family:var(--fh);
+  font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:900;line-height:1;
+  letter-spacing:-2px;margin-bottom:1rem;
+}
+.hero-name em{
+  font-style:italic;display:block;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:1rem;color:var(--muted);max-width:460px;
+  line-height:1.85;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+
+/* Avatar */
+.avatar-wrap{position:relative;width:260px;height:260px}
+.avatar-spin{
+  position:absolute;inset:0;border-radius:50%;
+  border:2px dashed rgba(124,58,237,.25);
+  animation:spin 20s linear infinite;
+}
+.avatar-spin2{
+  position:absolute;inset:14px;border-radius:50%;
+  border:1px dashed rgba(14,165,233,.2);
+  animation:spin 14s linear infinite reverse;
+}
+.avatar-inner{
+  position:absolute;inset:28px;border-radius:50%;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fh);font-size:3.2rem;font-weight:900;color:#fff;
+  box-shadow:0 16px 60px rgba(124,58,237,.35);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Side stats */
+.side-card{
+  position:absolute;background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:.7rem 1.1rem;
+  box-shadow:var(--shadow);font-size:.78rem;font-weight:600;
+  display:flex;align-items:center;gap:.5rem;white-space:nowrap;
+}
+.side-card .sc-num{
+  font-family:var(--fh);font-size:1.3rem;font-weight:900;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.sc1{top:-10px;right:-30px}
+.sc2{bottom:20px;right:-40px}
+.sc3{bottom:-10px;left:-20px}
+
+/* Hero tags strip */
+.hero-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-tag{
+  padding:.3rem .9rem;border-radius:20px;
+  font-size:.78rem;font-weight:600;
+  background:rgba(124,58,237,.08);color:var(--primary);
+  border:1px solid rgba(124,58,237,.15);
+}
+.hero-tag.sky{background:rgba(14,165,233,.08);color:#0284c7;border-color:rgba(14,165,233,.2)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/*====================================================
+  ABOUT
+====================================================*/
+.about-bg{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+
+.about-left{}
+.about-avatar-big{
+  width:100%;aspect-ratio:1;max-width:300px;
+  border-radius:24px;background:linear-gradient(135deg,#ede9fe,#e0f2fe);
+  display:flex;align-items:center;justify-content:center;
+  font-size:6rem;border:1px solid var(--border);
+  box-shadow:var(--shadow);margin-bottom:1.5rem;
+}
+.about-quick{display:flex;flex-direction:column;gap:.8rem}
+.aq-card{
+  display:flex;align-items:center;gap:.9rem;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;padding:.8rem 1rem;
+  transition:border-color .2s;
+}
+.aq-card:hover{border-color:var(--primary)}
+.aq-icon{font-size:1.3rem;flex-shrink:0}
+.aq-label{font-size:.72rem;color:var(--sky);font-weight:700;letter-spacing:.5px;display:block}
+.aq-val{font-size:.88rem;font-weight:500;color:var(--text)}
+.aq-val a{color:var(--primary)}
+.aq-val a:hover{text-decoration:underline}
+
+.about-right h2{
+  font-family:var(--fh);font-size:2rem;font-weight:900;
+  margin-bottom:1.2rem;
+}
+.about-right h2 em{
+  font-style:italic;background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.about-right p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:.97rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.8rem}
+.pill{
+  padding:.3rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600;
+  background:#ede9fe;color:var(--primary);border:1px solid #ddd6fe;
+}
+.pill.sky{background:#e0f2fe;color:#0284c7;border-color:#bae6fd}
+
+/* Timeline */
+.timeline{margin-top:2rem}
+.timeline h3{font-family:var(--fh);font-size:1.3rem;margin-bottom:1.5rem}
+.tl-item{display:flex;gap:1.2rem;position:relative;padding-bottom:1.8rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--grad);flex-shrink:0;margin-top:4px;position:relative;z-index:1;
+}
+.tl-item:not(:last-child) .tl-dot::after{
+  content:'';position:absolute;top:14px;left:6px;
+  width:2px;background:var(--border);
+  height:calc(100% + 1.8rem - 14px);
+}
+.tl-body{flex:1}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--sky);letter-spacing:1px;text-transform:uppercase}
+.tl-title{font-family:var(--fh);font-size:1rem;font-weight:700;margin:.2rem 0}
+.tl-desc{font-size:.87rem;color:var(--muted);line-height:1.7}
+
+/*====================================================
+  SKILLS — exactly like reference
+====================================================*/
+.skills-bg{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.4rem}
+.skill-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.skill-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--primary)}
+.sk-icon{font-size:1.8rem;margin-bottom:.7rem}
+.sk-name{font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.sk-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/*====================================================
+  PROJECTS
+====================================================*/
+.projects-bg{background:var(--surface);border-top:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
+.proj-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  display:flex;flex-direction:column;
+}
+.proj-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--primary)}
+.proj-thumb{
+  height:160px;display:flex;align-items:center;
+  justify-content:center;font-size:4rem;position:relative;
+}
+.proj-year{
+  position:absolute;top:.8rem;left:.8rem;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(6px);
+  border-radius:20px;padding:.2rem .7rem;
+  font-size:.72rem;font-weight:700;color:var(--primary);
+}
+.proj-body{padding:1.4rem;flex:1;display:flex;flex-direction:column}
+.proj-tags-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.proj-tag{
+  font-size:.68rem;font-weight:600;padding:.2rem .65rem;
+  border-radius:20px;background:rgba(124,58,237,.08);
+  color:var(--primary);border:1px solid rgba(124,58,237,.15);
+}
+.proj-body h3{font-family:var(--fh);font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.proj-body p{font-size:.87rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1.2rem}
+.proj-links{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/*====================================================
+  CERTIFICATIONS
+====================================================*/
+.certs-bg{background:var(--bg)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+.cert-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:1.6rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;
+}
+.cert-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--primary)}
+.cert-top{display:flex;align-items:center;gap:1rem}
+.cert-badge{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;flex-shrink:0;
+}
+.cert-platform{font-size:.72rem;font-weight:700;color:var(--sky);letter-spacing:.5px;text-transform:uppercase}
+.cert-name{font-family:var(--fh);font-size:1rem;font-weight:700;line-height:1.3}
+.cert-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+.cert-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:.8rem;border-top:1px solid var(--border);
+}
+.cert-date{font-size:.75rem;color:var(--muted);font-weight:600}
+.cert-view{
+  font-size:.78rem;font-weight:700;color:var(--primary);
+  display:flex;align-items:center;gap:.3rem;
+}
+
+/*====================================================
+  CONTACT
+====================================================*/
+.contact-bg{background:var(--surface);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;align-items:start}
+.contact-info h2{font-family:var(--fh);font-size:1.8rem;font-weight:900;margin-bottom:1rem}
+.contact-info h2 em{
+  font-style:italic;background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.contact-info>p{color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+.contact-items{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.5rem}
+.ci{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;padding:.8rem 1.1rem;
+  transition:border-color .2s;
+}
+.ci:hover{border-color:var(--primary)}
+.ci-icon{font-size:1.3rem;flex-shrink:0}
+.ci-text strong{font-size:.72rem;color:var(--sky);font-weight:700;letter-spacing:.5px;display:block;text-transform:uppercase}
+.ci-text span,.ci-text a{font-size:.88rem;color:var(--muted);transition:color .2s}
+.ci:hover .ci-text a,.ci:hover .ci-text span{color:var(--primary)}
+.social-row{display:flex;gap:.8rem;flex-wrap:wrap}
+
+.form-card{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:2rem;
+}
+.form-card h3{font-family:var(--fh);font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.82rem;font-weight:600;margin-bottom:.4rem;color:var(--text)}
+.fg input,.fg textarea{
+  width:100%;padding:.8rem 1rem;background:var(--surface);
+  border:1.5px solid var(--border);border-radius:10px;
+  font-family:var(--fb);font-size:.9rem;color:var(--text);
+  outline:none;transition:border-color .2s,box-shadow .2s;resize:none;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:#b0bac9}
+.fg input:focus,.fg textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(124,58,237,.10)}
+.fg textarea{height:120px}
+.form-success{
+  display:none;text-align:center;padding:1rem;
+  color:var(--primary);font-weight:700;font-size:.95rem;
+}
+
+/*====================================================
+  FOOTER
+====================================================*/
+footer{
+  background:var(--text);color:rgba(255,255,255,.55);
+  text-align:center;padding:2rem;font-size:.85rem;
+}
+footer strong{color:#fff}
+.footer-links{display:flex;justify-content:center;gap:2rem;margin-top:.7rem}
+.footer-links a{color:rgba(255,255,255,.45);font-size:.82rem;transition:color .2s}
+.footer-links a:hover{color:#fff}
+
+/*====================================================
+  MODAL (cert viewer + live demos)
+====================================================*/
+.modal{
+  display:none;position:fixed;inset:0;z-index:900;
+  background:rgba(18,10,50,.72);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.modal.open{display:flex}
+.modal-box{
+  background:#fff;border-radius:20px;width:100%;
+  max-height:90vh;display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden;
+  animation:popIn .3s ease;
+}
+.modal-box.wide{max-width:900px}
+.modal-box.narrow{max-width:480px}
+.modal-box.cert-box{max-width:820px}
+@keyframes popIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.5rem;border-bottom:1px solid var(--border);
+  background:var(--bg);flex-shrink:0;
+}
+.modal-head-title{font-family:var(--fh);font-size:1.1rem;font-weight:800}
+.modal-close{
+  width:32px;height:32px;border-radius:50%;border:none;
+  background:var(--border);cursor:pointer;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.modal-close:hover{background:#ddd6fe;color:var(--primary)}
+.modal-body{flex:1;overflow-y:auto;padding:1.5rem}
+
+/* cert preview */
+.cert-preview{width:100%;border-radius:12px;overflow:hidden}
+.cert-preview iframe{width:100%;height:500px;border:none}
+.cert-preview-note{
+  margin-top:1rem;padding:.8rem 1rem;
+  background:#ede9fe;border-radius:10px;
+  font-size:.82rem;color:var(--primary);font-weight:500;
+}
+
+/*====================================================
+  WEATHER inside modal
+====================================================*/
+.weather-wrap{
+  max-width:420px;margin:0 auto;
+  background:linear-gradient(160deg,#0f172a,#1e293b);
+  border-radius:20px;padding:2rem;color:#e2e8f0;
+  font-family:var(--fb);
+}
+.w-head{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:#38bdf8;font-weight:700;margin-bottom:1.2rem}
+.w-row{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.w-row input{
+  flex:1;padding:.7rem 1rem;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);border-radius:10px;
+  color:#e2e8f0;font-size:.9rem;outline:none;transition:border-color .2s;
+}
+.w-row input::placeholder{color:rgba(255,255,255,.3)}
+.w-row input:focus{border-color:#38bdf8}
+.w-row button{
+  padding:.7rem 1rem;background:#38bdf8;border:none;
+  border-radius:10px;cursor:pointer;font-size:1rem;transition:background .2s;
+}
+.w-row button:hover{background:#7dd3fc}
+#wr{display:none;animation:fadeUp .4s ease}
+.w-icon{font-size:4.5rem;text-align:center}
+.w-city2{font-family:var(--fh);font-size:1.5rem;font-weight:800;text-align:center;margin:.3rem 0 .1rem}
+.w-date2{text-align:center;font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:.8rem}
+.w-temp2{font-family:var(--fh);font-size:4rem;font-weight:900;text-align:center;line-height:1}
+.w-cond2{text-align:center;color:#38bdf8;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin:.3rem 0 1.4rem}
+.w-stats2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem}
+.w-st{background:rgba(255,255,255,.07);border-radius:12px;padding:.8rem;text-align:center}
+.w-sti{font-size:1.1rem}
+.w-stv{font-size:.95rem;font-weight:700}
+.w-stl{font-size:.62rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px}
+#werr{display:none;text-align:center;color:#f87171;padding:1rem;font-size:.88rem}
+#wload{display:none;text-align:center;padding:1rem;color:rgba(255,255,255,.4)}
+.w-note{
+  margin-top:1rem;padding:.7rem 1rem;
+  background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);
+  border-radius:10px;font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;
+}
+.w-note strong{color:#38bdf8}
+
+/*====================================================
+  TODO inside modal
+====================================================*/
+.todo-wrap{max-width:480px;margin:0 auto;font-family:var(--fb)}
+.todo-head{text-align:center;margin-bottom:1.2rem}
+.todo-head h2{font-family:var(--fh);font-size:1.5rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.todo-head p{font-size:.83rem;color:var(--muted);margin-top:.2rem}
+.todo-counts{display:flex;gap:.8rem;margin-bottom:1rem}
+.tc{flex:1;text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.7rem}
+.tc-n{font-family:var(--fh);font-size:1.5rem;font-weight:900;color:var(--primary);display:block}
+.tc-l{font-size:.7rem;color:var(--muted);font-weight:600}
+.todo-row{display:flex;gap:.5rem;margin-bottom:1rem}
+.todo-row input{
+  flex:1;padding:.75rem 1rem;background:var(--surface);
+  border:1.5px solid var(--border);border-radius:10px;
+  font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s;
+}
+.todo-row input:focus{border-color:var(--primary)}
+.todo-row input::placeholder{color:#b0bac9}
+.todo-row button{
+  padding:.75rem 1rem;background:var(--grad);color:#fff;
+  border:none;border-radius:10px;font-size:1.1rem;cursor:pointer;transition:transform .15s;
+}
+.todo-row button:hover{transform:scale(1.07)}
+.todo-filters{display:flex;gap:.5rem;margin-bottom:1rem}
+.tf{
+  padding:.35rem .9rem;border-radius:20px;border:1.5px solid var(--border);
+  background:transparent;color:var(--muted);font-size:.78rem;
+  font-weight:600;cursor:pointer;transition:all .2s;
+}
+.tf.active{background:var(--grad);color:#fff;border-color:transparent}
+.todo-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;max-height:260px;overflow-y:auto}
+.ti{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.8rem 1rem;background:var(--surface);
+  border:1.5px solid var(--border);border-radius:10px;
+  animation:fadeUp .25s ease;
+}
+.ti.done{opacity:.55}
+.ti.done .ti-text{text-decoration:line-through;color:var(--muted)}
+.ti-ck{
+  width:22px;height:22px;border-radius:50%;border:2px solid var(--border);
+  cursor:pointer;background:transparent;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:#fff;transition:all .2s;
+}
+.ti.done .ti-ck{background:var(--grad);border-color:transparent}
+.ti-text{flex:1;font-size:.9rem;cursor:pointer}
+.ti-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:.95rem;transition:color .2s}
+.ti-del:hover{color:#ef4444}
+.todo-empty{text-align:center;padding:2rem;color:var(--muted);font-size:.9rem}
+.todo-clear{
+  width:100%;margin-top:1rem;padding:.6rem;
+  background:transparent;border:1.5px solid #fecaca;border-radius:10px;
+  color:#ef4444;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s;
+}
+.todo-clear:hover{background:#fef2f2}
+
+/*====================================================
+  CALC inside modal
+====================================================*/
+.calc-wrap{
+  max-width:320px;margin:0 auto;
+  background:#1a1a2e;border-radius:20px;padding:1.4rem;color:#e2e8f0;
+}
+.calc-note{
+  background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);
+  border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem;
+  font-size:.8rem;color:var(--primary);line-height:1.6;
+}
+.calc-display{background:#0f0f1a;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.9rem}
+.calc-expr{font-size:.82rem;color:#6366f1;min-height:1.1em;text-align:right;margin-bottom:.2rem}
+.calc-main{font-size:2.3rem;font-weight:800;text-align:right;color:#e2e8f0;font-family:'Courier New',monospace;word-break:break-all}
+.calc-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
+.cb{
+  padding:0;aspect-ratio:1;border:none;border-radius:11px;
+  font-size:1rem;font-weight:700;cursor:pointer;
+  transition:transform .1s,filter .1s;
+}
+.cb:hover{filter:brightness(1.3);transform:scale(1.05)}
+.cb:active{transform:scale(.96)}
+.cb-n{background:#252540;color:#e2e8f0}
+.cb-o{background:#2a2a50;color:#818cf8}
+.cb-e{background:linear-gradient(135deg,#7c3aed,#0ea5e9);color:#fff}
+.cb-c{background:#7f1d1d;color:#fca5a5}
+.cb-w{grid-column:span 2;aspect-ratio:auto;padding:.82rem}
+
+/*====================================================
+  RESPONSIVE
+====================================================*/
+@media(max-width:900px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  #home{flex-direction:column;text-align:center;padding:7rem 1.5rem 4rem}
+  .hero-eyebrow{justify-content:center}
+  .hero-sub{margin:0 auto 2.5rem}
+  .hero-btns{justify-content:center}
+  .hero-right{order:-1}
+  .side-card{display:none}
+}
+@media(max-width:640px){
+  header .nav-links{display:none}
+  .hamburger{display:block}
+  section{padding:4rem 1.2rem}
+  .sec-full>div{padding:4rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND BLOBS -->
+<div class="hero-blob blob1"></div>
+<div class="hero-blob blob2"></div>
+
+<!--====================================================
+  HEADER / NAV
+====================================================-->
+<header>
+  <nav class="navbar">
+    <div class="nav-logo">Dhanshri.</div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleNav()">☰</button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home" onclick="toggleNav()">Home</a>
+    <a href="#about" onclick="toggleNav()">About</a>
+    <a href="#skills" onclick="toggleNav()">Skills</a>
+    <a href="#projects" onclick="toggleNav()">Projects</a>
+    <a href="#certifications" onclick="toggleNav()">Certifications</a>
+    <a href="#contact" onclick="toggleNav()">Contact</a>
+  </div>
+</header>
+
+<!--====================================================
+  HERO
+====================================================-->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Open to learning &amp; collaborations</div>
+    <h1 class="hero-name">Hi, I'm<em>Dhanshri Shankhpal</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag">Web Dev</span>
+      <span class="hero-tag sky">Python</span>
+      <span class="hero-tag">C Language</span>
+      <span class="hero-tag sky">AI Tools</span>
+    </div>
+    <p class="hero-sub">
+      First-Year Computer Engineering student at
+      <strong>MIT Academy of Engineering, Alandi, Pune</strong> (Batch 2025–29).
+      Passionate about web development, building real projects, and constantly learning new things.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Say Hello</a>
+      <a href="#projects" class="btn btn-outline">My Projects</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="avatar-wrap">
+      <div class="avatar-spin"></div>
+      <div class="avatar-spin2"></div>
+      <div class="avatar-inner">DS</div>
+      <div class="side-card sc1"><span class="sc-num">3+</span>&nbsp;Projects</div>
+      <div class="side-card sc2"><span class="sc-num">7</span>&nbsp;Certificates</div>
+      <div class="side-card sc3">CE&nbsp;·&nbsp;<span class="sc-num">2025</span></div>
+    </div>
+  </div>
+</section>
+
+<!--====================================================
+  ABOUT
+====================================================-->
+<div class="about-bg">
+<section id="about">
+  <div class="about-grid">
+    <!-- Left -->
+    <div class="about-left">
+      <div class="about-avatar-big">🧑‍💻</div>
+      <div class="about-quick">
+        <div class="aq-card">
+          <span class="aq-icon">🎓</span>
+          <div><span class="aq-label">Education</span><span class="aq-val">B.Tech CE · MITAOE, Alandi, Pune</span></div>
+        </div>
+        <div class="aq-card">
+          <span class="aq-icon">📅</span>
+          <div><span class="aq-label">Batch</span><span class="aq-val">2025 – 29 · 1st Year</span></div>
+        </div>
+        <div class="aq-card">
+          <span class="aq-icon">📍</span>
+          <div><span class="aq-label">Location</span><span class="aq-val">Pune, Maharashtra, India</span></div>
+        </div>
+        <div class="aq-card">
+          <span class="aq-icon">🐙</span>
+          <div><span class="aq-label">GitHub</span><span class="aq-val"><a href="https://github.com/Dhanshrishankhpal045" target="_blank">Dhanshrishankhpal045</a></span></div>
+        </div>
+        <div class="aq-card">
+          <span class="aq-icon">💼</span>
+          <div><span class="aq-label">LinkedIn</span><span class="aq-val"><a href="https://www.linkedin.com/in/dhanshri-shankhpal-47a3833b7/" target="_blank">dhanshri-shankhpal</a></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="about-right">
+      <div class="sec-label">My Story</div>
+      <h2>My <em>Journey</em></h2>
+      <p>
+        I'm <strong>Dhanshri Shankhpal</strong>, a first-year Computer Engineering student at
+        <strong>MIT Academy of Engineering (MITAOE), Alandi, Pune</strong> (Batch 2025–29).
+        I'm passionate about technology, web development, and building creative solutions that solve real-world problems.
+      </p>
+      <p>
+        My journey began with the fundamentals of C language and quickly expanded into web development
+        through HTML &amp; CSS. I love crafting clean, interactive web pages and exploring Python
+        for automation and scripting.
+      </p>
+      <p>
+        Outside academics, I actively take online courses, earn certifications, and build projects —
+        because real growth happens when you step beyond the classroom and build something real.
+      </p>
+      <div class="about-pills">
+        <span class="pill">📍 Pune, MH</span>
+        <span class="pill">🎓 MITAOE Alandi</span>
+        <span class="pill sky">💻 CE Branch</span>
+        <span class="pill sky">🤖 AI Curious</span>
+        <span class="pill">🌐 Web Dev</span>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline">
+        <h3>A glimpse into my <em style="font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">journey</em></h3>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-year">2025 — Present</div>
+            <div class="tl-title">First-Year CE Student · MITAOE, Alandi</div>
+            <div class="tl-desc">Enrolled in Computer Engineering (Batch 2025–29) at MIT Academy of Engineering. Building strong fundamentals in programming, web technology, and computer science.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-year">2025 — 2026</div>
+            <div class="tl-title">Started Coding &amp; Certifications Journey</div>
+            <div class="tl-desc">Completed Python Essentials 1 &amp; 2, NASSCOM Digital 101 (Gold), and multiple Anthropic AI Fluency courses — all while building real projects.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-year">2025 — 2026</div>
+            <div class="tl-title">First Projects Milestone</div>
+            <div class="tl-desc">Completed 3+ projects including a Weather App, Python Calculator, and To-Do List App — all built using HTML, CSS, JavaScript and Python.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem">
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <a href="#projects" class="btn btn-outline" style="margin-left:.8rem">View Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!--====================================================
+  SKILLS
+====================================================-->
+<div class="skills-bg">
+<section id="skills">
+  <div class="sec-label">My Toolkit</div>
+  <h2 class="sec-title">My <em>Skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="sk-icon">🌐</div>
+      <div class="sk-name">HTML5</div>
+      <div class="sk-desc">Semantic, accessible web structure with proper use of tags and elements</div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">🎨</div>
+      <div class="sk-name">CSS3</div>
+      <div class="sk-desc">Styling, flexbox, grid layouts, responsive design and transitions</div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">🐍</div>
+      <div class="sk-name">Python</div>
+      <div class="sk-desc">Scripting, automation, data basics and GUI apps with Tkinter</div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">⚙️</div>
+      <div class="sk-name">C Language</div>
+      <div class="sk-desc">Programming fundamentals, logic building and problem solving</div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">🤖</div>
+      <div class="sk-name">AI Tools</div>
+      <div class="sk-desc">Prompt engineering, generative AI usage and responsible AI practices</div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">🧩</div>
+      <div class="sk-name">Problem Solving</div>
+      <div class="sk-desc">Analytical thinking, debugging and breaking down complex problems</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!--====================================================
+  PROJECTS
+====================================================-->
+<div class="projects-bg">
+<section id="projects">
+  <div class="sec-label">What I've Built</div>
+  <h2 class="sec-title">My <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <!-- Weather App -->
+    <div class="proj-card">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#bae6fd,#38bdf8)">
+        🌤️<span class="proj-year">2025</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tags-row">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">API</span>
+        </div>
+        <h3>Weather App</h3>
+        <p>A responsive weather application showing real-time temperature, humidity and wind speed for any city. Fetches live data from OpenWeatherMap API with a clean dark UI.</p>
+        <div class="proj-links">
+          <button class="btn btn-primary btn-sm" onclick="openModal('weather')">▶ Live Demo</button>
+          <a href="https://github.com/Dhanshrishankhpal045" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="proj-card">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#ddd6fe,#8b5cf6)">
+        🧮<span class="proj-year">2025</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tags-row">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+        </div>
+        <h3>Calculator</h3>
+        <p>A fully functional calculator with a clean dark UI supporting all basic arithmetic operations — addition, subtraction, multiplication and division with smooth button interactions.</p>
+        <div class="proj-links">
+          <button class="btn btn-primary btn-sm" onclick="openModal('calc')">▶ Live Demo</button>
+          <a href="https://github.com/Dhanshrishankhpal045" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- To-Do List -->
+    <div class="proj-card">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#bbf7d0,#34d399)">
+        ✅<span class="proj-year">2025</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tags-row">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+        </div>
+        <h3>To-Do List App</h3>
+        <p>A minimal task manager where you can add, complete, and delete tasks. Animated task items with a clean blue gradient UI and smooth slide-in effects.</p>
+        <div class="proj-links">
+          <button class="btn btn-primary btn-sm" onclick="openModal('todo')">▶ Live Demo</button>
+          <a href="https://github.com/Dhanshrishankhpal045" target="_blank" class="btn btn-ghost btn-sm">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!--====================================================
+  CERTIFICATIONS
+====================================================-->
+<div class="certs-bg">
+<section id="certifications">
+  <div class="sec-label">Courses &amp; Certificates</div>
+  <h2 class="sec-title">My <em>Certifications</em></h2>
+  <div class="certs-grid">
+
+    <div class="cert-card" onclick="openCert('nasscom')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#e0f2fe">🏛️</div>
+        <div>
+          <div class="cert-platform">NASSCOM · FutureSkills Prime</div>
+          <div class="cert-name">Digital 101 – 30 Hours</div>
+        </div>
+      </div>
+      <div class="cert-desc">Government-certified digital skills assessment. Scored 95/100 — Gold Category (70%+ score). Aligned to NASSCOM IT-ITeS competency standards.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · Apr 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('py1')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#e0f2fe">🐍</div>
+        <div>
+          <div class="cert-platform">Cisco Networking Academy · MITAOE</div>
+          <div class="cert-name">Python Essentials 1</div>
+        </div>
+      </div>
+      <div class="cert-desc">Fundamentals of Python programming — data types, loops, functions, conditionals and introductory programming concepts via Cisco NetAcad.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · Apr 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('py2')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#e0f2fe">🐍</div>
+        <div>
+          <div class="cert-platform">Cisco Networking Academy · MITAOE</div>
+          <div class="cert-name">Python Essentials 2</div>
+        </div>
+      </div>
+      <div class="cert-desc">Advanced Python — OOP, data structures, file handling, and exception handling. Builds on Python Essentials 1 with deeper programming concepts.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · Apr 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('claude')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#ede9fe">🤖</div>
+        <div>
+          <div class="cert-platform">Anthropic</div>
+          <div class="cert-name">Introduction to Claude Cowork</div>
+        </div>
+      </div>
+      <div class="cert-desc">Completed an introduction to Claude AI and the Cowork platform — covering AI-assisted workflows and responsible use of generative AI tools.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('aif')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#ede9fe">🤖</div>
+        <div>
+          <div class="cert-platform">Anthropic</div>
+          <div class="cert-name">AI Fluency for Students</div>
+        </div>
+      </div>
+      <div class="cert-desc">AI fluency course for students focused on responsible generative AI, practical applications, and understanding how modern AI models work.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('aiff')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#ede9fe">🤖</div>
+        <div>
+          <div class="cert-platform">Anthropic</div>
+          <div class="cert-name">AI Fluency: Framework &amp; Foundations</div>
+        </div>
+      </div>
+      <div class="cert-desc">Deep dive into AI frameworks, foundational concepts, and advanced generative AI techniques with a focus on real-world applications.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+    <div class="cert-card" onclick="openCert('aifnp')">
+      <div class="cert-top">
+        <div class="cert-badge" style="background:#d1fae5">🤖</div>
+        <div>
+          <div class="cert-platform">Anthropic · GivingTuesday</div>
+          <div class="cert-name">AI Fluency for Nonprofits</div>
+        </div>
+      </div>
+      <div class="cert-desc">AI fluency course tailored for nonprofit organizations, focusing on ethical AI use, responsible deployment, and practical AI applications.</div>
+      <div class="cert-footer">
+        <span class="cert-date">Completed · 2026</span>
+        <span class="cert-view">View Certificate →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!--====================================================
+  CONTACT
+====================================================-->
+<div class="contact-bg">
+<section id="contact">
+  <div class="sec-label">Let's Connect</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>Say <em>Hello</em> 👋</h2>
+      <p>I'm always open to learning from others, collaborating on projects, or just chatting about tech and new ideas!</p>
+      <div class="contact-items">
+        <div class="ci">
+          <span class="ci-icon">📍</span>
+          <div class="ci-text"><strong>Location</strong><span>Pune, Maharashtra, India</span></div>
+        </div>
+        <a href="mailto:dhanshrishankhpal55@gmail.com" class="ci">
+          <span class="ci-icon">📧</span>
+          <div class="ci-text"><strong>Email</strong><span>dhanshrishankhpal55@gmail.com</span></div>
+        </a>
+        <div class="ci">
+          <span class="ci-icon">🎓</span>
+          <div class="ci-text"><strong>College</strong><span>MITAOE, Alandi, Pune · CE (2025–29)</span></div>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/Dhanshrishankhpal045" target="_blank" class="btn btn-outline btn-sm">🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/dhanshri-shankhpal-47a3833b7/" target="_blank" class="btn btn-outline btn-sm">💼 LinkedIn</a>
+        <a href="mailto:dhanshrishankhpal55@gmail.com" class="btn btn-primary btn-sm">📧 Email</a>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>Send a Message</h3>
+      <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="e.g. Rahul Sharma"/></div>
+      <div class="fg"><label>Email</label><input type="email" id="fe" placeholder="e.g. rahul@email.com"/></div>
+      <div class="fg"><label>Subject</label><input type="text" id="fs" placeholder="e.g. Collaboration"/></div>
+      <div class="fg"><label>Message</label><textarea id="fm" placeholder="Write your message here..."></textarea></div>
+      <button class="btn btn-primary" style="width:100%" id="fsend" onclick="sendMsg()">Send Message 🚀</button>
+      <div class="form-success" id="fsuccess">✅ Thanks! I'll get back to you soon.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!--====================================================
+  FOOTER
+====================================================-->
+<footer>
+  <p><strong>Dhanshri.</strong></p>
+  <p style="margin-top:.4rem">Designed &amp; built by Dhanshri Shankhpal · MITAOE, Alandi, Pune · CE (2025–29)</p>
+  <div class="footer-links">
+    <a href="https://github.com/Dhanshrishankhpal045" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/dhanshri-shankhpal-47a3833b7/" target="_blank">LinkedIn</a>
+    <a href="mailto:dhanshrishankhpal55@gmail.com">Email</a>
+  </div>
+  <p style="margin-top:.6rem;font-size:.78rem">Made with ♥ and a lot of curiosity</p>
+</footer>
+
+<!--====================================================
+  MODAL: WEATHER
+====================================================-->
+<div class="modal" id="m-weather">
+  <div class="modal-box narrow">
+    <div class="modal-head">
+      <span class="modal-head-title">🌤️ Weather App</span>
+      <button class="modal-close" onclick="closeModal('weather')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="weather-wrap">
+        <div class="w-head">☁ Weather App</div>
+        <div class="w-row">
+          <input type="text" id="wcity" placeholder="Enter city name..." onkeydown="if(event.key==='Enter')wSearch()"/>
+          <button onclick="wSearch()">🔍</button>
+        </div>
+        <div id="wload">Loading...</div>
+        <div id="werr"></div>
+        <div id="wr">
+          <div class="w-icon" id="wi">🌤️</div>
+          <div class="w-city2" id="wcn"></div>
+          <div class="w-date2" id="wdt"></div>
+          <div class="w-temp2" id="wtp"></div>
+          <div class="w-cond2" id="wcd"></div>
+          <div class="w-stats2">
+            <div class="w-st"><div class="w-sti">💧</div><div class="w-stv" id="whm"></div><div class="w-stl">Humidity</div></div>
+            <div class="w-st"><div class="w-sti">💨</div><div class="w-stv" id="wwd"></div><div class="w-stl">Wind</div></div>
+            <div class="w-st"><div class="w-sti">🌡️</div><div class="w-stv" id="wfl"></div><div class="w-stl">Feels Like</div></div>
+          </div>
+        </div>
+        <div class="w-note"><strong>💡 Demo Mode</strong> — Try: <strong>Mumbai, London, Tokyo, Delhi, Pune, Paris</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====================================================
+  MODAL: CALCULATOR
+====================================================-->
+<div class="modal" id="m-calc">
+  <div class="modal-box narrow">
+    <div class="modal-head">
+      <span class="modal-head-title">🧮 Calculator</span>
+      <button class="modal-close" onclick="closeModal('calc')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="calc-wrap">
+        <div class="calc-display">
+          <div class="calc-expr" id="ce"></div>
+          <div class="calc-main" id="cd">0</div>
+        </div>
+        <div class="calc-btns">
+          <button class="cb cb-c" onclick="cb2('C')">C</button>
+          <button class="cb cb-o" onclick="cb2('+/-')">+/-</button>
+          <button class="cb cb-o" onclick="cb2('%')">%</button>
+          <button class="cb cb-o" onclick="cb2('/')">÷</button>
+          <button class="cb cb-n" onclick="cb2('7')">7</button>
+          <button class="cb cb-n" onclick="cb2('8')">8</button>
+          <button class="cb cb-n" onclick="cb2('9')">9</button>
+          <button class="cb cb-o" onclick="cb2('*')">×</button>
+          <button class="cb cb-n" onclick="cb2('4')">4</button>
+          <button class="cb cb-n" onclick="cb2('5')">5</button>
+          <button class="cb cb-n" onclick="cb2('6')">6</button>
+          <button class="cb cb-o" onclick="cb2('-')">−</button>
+          <button class="cb cb-n" onclick="cb2('1')">1</button>
+          <button class="cb cb-n" onclick="cb2('2')">2</button>
+          <button class="cb cb-n" onclick="cb2('3')">3</button>
+          <button class="cb cb-o" onclick="cb2('+')">+</button>
+          <button class="cb cb-n cb-w" onclick="cb2('0')">0</button>
+          <button class="cb cb-n" onclick="cb2('.')">.</button>
+          <button class="cb cb-e" onclick="cb2('=')">=</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====================================================
+  MODAL: TODO
+====================================================-->
+<div class="modal" id="m-todo">
+  <div class="modal-box narrow">
+    <div class="modal-head">
+      <span class="modal-head-title">✅ To-Do List App</span>
+      <button class="modal-close" onclick="closeModal('todo')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="todo-wrap">
+        <div class="todo-head">
+          <h2>✅ To-Do List</h2>
+          <p>Stay organized, stay productive</p>
+        </div>
+        <div class="todo-counts">
+          <div class="tc"><span class="tc-n" id="tt">0</span><span class="tc-l">Total</span></div>
+          <div class="tc"><span class="tc-n" id="tp">0</span><span class="tc-l">Pending</span></div>
+          <div class="tc"><span class="tc-n" id="td">0</span><span class="tc-l">Done</span></div>
+        </div>
+        <div class="todo-row">
+          <input type="text" id="tinput" placeholder="Enter task..." onkeydown="if(event.key==='Enter')tAdd()"/>
+          <button onclick="tAdd()">Add</button>
+        </div>
+        <div class="todo-filters">
+          <button class="tf active" onclick="tFilter('all',this)">All</button>
+          <button class="tf" onclick="tFilter('pending',this)">Pending</button>
+          <button class="tf" onclick="tFilter('done',this)">Done</button>
+        </div>
+        <ul class="todo-list" id="tlist"></ul>
+        <div class="todo-empty" id="tempty">📋 No tasks yet. Add one above!</div>
+        <button class="todo-clear" onclick="tClear()">🗑️ Clear Completed</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====================================================
+  MODAL: CERTIFICATE VIEWER
+====================================================-->
+<div class="modal" id="m-cert">
+  <div class="modal-box cert-box">
+    <div class="modal-head">
+      <span class="modal-head-title" id="cert-title">Certificate</span>
+      <button class="modal-close" onclick="closeModal('cert')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="cert-preview">
+        <iframe id="cert-frame" src="" title="Certificate"></iframe>
+      </div>
+      <div class="cert-preview-note">
+        📄 If the certificate doesn't load, make sure the PDF file is in the same folder as this HTML file.
+        Place your certificate PDFs named as shown below alongside <code>index.html</code>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/*====================================================
+  NAV
+====================================================*/
+function toggleNav(){document.getElementById('mobileNav').classList.toggle('open')}
+
+// Active nav on scroll
+const sections=document.querySelectorAll('section,[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const link=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(link)link.classList.add('active');
+    }
+  });
+},{threshold:.4});
+document.querySelectorAll('#home,#about,#skills,#projects,#certifications,#contact')
+  .forEach(s=>obs.observe(s));
+
+/*====================================================
+  MODAL
+====================================================*/
+function openModal(id){
+  document.getElementById('m-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+  if(id==='weather'){document.getElementById('wcity').value='Pune';wSearch();}
+  if(id==='todo')tRender();
+}
+function closeModal(id){
+  document.getElementById('m-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.modal').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m){m.classList.remove('open');document.body.style.overflow=''}});
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));
+    document.body.style.overflow='';
+  }
+});
+
+/*====================================================
+  CERTIFICATE VIEWER
+====================================================*/
+const certFiles={
+  nasscom:'Nasscom_Certificate.pdf',
+  py1:'Python_Essential01_certificate.pdf',
+  py2:'Python_Essential02_certificate.pdf',
+  claude:'antropic_claude_101.pdf',
+  aif:'Antropic_03.pdf',
+  aiff:'anthropic_02.pdf',
+  aifnp:'Antropic_04.pdf',
+};
+const certNames={
+  nasscom:'NASSCOM · Digital 101',
+  py1:'Python Essentials 1',
+  py2:'Python Essentials 2',
+  claude:'Introduction to Claude Cowork',
+  aif:'AI Fluency for Students',
+  aiff:'AI Fluency: Framework & Foundations',
+  aifnp:'AI Fluency for Nonprofits',
+};
+function openCert(id){
+  document.getElementById('cert-title').textContent='📄 '+certNames[id];
+  document.getElementById('cert-frame').src=certFiles[id];
+  document.getElementById('m-cert').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+/*====================================================
+  WEATHER
+====================================================*/
+const wDemo={
+  'pune':{temp:29,feel:31,cond:'Warm & Sunny',hum:62,wind:12,icon:'🌤️'},
+  'mumbai':{temp:31,feel:34,cond:'Humid & Hazy',hum:82,wind:18,icon:'🌫️'},
+  'london':{temp:14,feel:11,cond:'Overcast Clouds',hum:78,wind:22,icon:'☁️'},
+  'tokyo':{temp:22,feel:21,cond:'Clear Sky',hum:55,wind:10,icon:'☀️'},
+  'new york':{temp:18,feel:16,cond:'Light Rain',hum:88,wind:28,icon:'🌧️'},
+  'delhi':{temp:38,feel:42,cond:'Sunny & Hot',hum:30,wind:8,icon:'🔆'},
+  'paris':{temp:17,feel:15,cond:'Partly Cloudy',hum:65,wind:15,icon:'⛅'},
+};
+function wSearch(){
+  const city=document.getElementById('wcity').value.trim();
+  if(!city)return;
+  document.getElementById('werr').style.display='none';
+  document.getElementById('wr').style.display='none';
+  document.getElementById('wload').style.display='block';
+  setTimeout(()=>{
+    document.getElementById('wload').style.display='none';
+    const k=city.toLowerCase();
+    const icons=['☀️','⛅','🌦️','🌧️','🌤️'];
+    const conds=['Clear Sky','Partly Cloudy','Light Rain','Overcast','Sunny'];
+    const idx=Math.floor(Math.random()*5);
+    const d=wDemo[k]||{temp:Math.round(18+Math.random()*18),feel:Math.round(16+Math.random()*18),
+      cond:conds[idx],hum:Math.round(45+Math.random()*45),wind:Math.round(6+Math.random()*25),icon:icons[idx]};
+    document.getElementById('wi').textContent=d.icon;
+    document.getElementById('wcn').textContent=city.split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+    document.getElementById('wdt').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+    document.getElementById('wtp').textContent=d.temp+'°C';
+    document.getElementById('wcd').textContent=d.cond;
+    document.getElementById('whm').textContent=d.hum+'%';
+    document.getElementById('wwd').textContent=d.wind+' km/h';
+    document.getElementById('wfl').textContent=d.feel+'°C';
+    document.getElementById('wr').style.display='block';
+  },700);
+}
+
+/*====================================================
+  CALCULATOR
+====================================================*/
+let cEx='',cV='0';
+function cb2(v){
+  if(v==='C'){cEx='';cV='0';}
+  else if(v==='='){
+    try{
+      document.getElementById('ce').textContent=cEx+' =';
+      let r=Function('"use strict";return('+cEx+')')();
+      cV=Number.isInteger(r)?String(r):parseFloat(r.toFixed(8)).toString();
+      cEx='';
+    }catch{cV='Error';cEx='';}
+  }
+  else if(v==='+/-'){cV=cV.startsWith('-')?cV.slice(1):(cV!=='0'?'-'+cV:'0');return;}
+  else if(v==='%'){try{cV=String(parseFloat(cEx||cV)/100);cEx=cV;}catch{}}
+  else{cEx+=(v==='÷'?'/':v==='×'?'*':v==='−'?'-':v);cV=cEx;}
+  document.getElementById('cd').textContent=cV;
+  if(v!=='=')document.getElementById('ce').textContent=v==='C'?'':cEx;
+}
+
+/*====================================================
+  TODO
+====================================================*/
+let tasks=[],tfState='all';
+function tAdd(){
+  const i=document.getElementById('tinput');
+  const t=i.value.trim();if(!t)return;
+  tasks.unshift({id:Date.now(),text:t,done:false});
+  i.value='';tRender();
+}
+function tToggle(id){tasks=tasks.map(t=>t.id===id?{...t,done:!t.done}:t);tRender()}
+function tRemove(id){tasks=tasks.filter(t=>t.id!==id);tRender()}
+function tClear(){tasks=tasks.filter(t=>!t.done);tRender()}
+function tFilter(f,btn){
+  tfState=f;
+  document.querySelectorAll('.tf').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');tRender();
+}
+function tRender(){
+  const done=tasks.filter(t=>t.done).length;
+  document.getElementById('tt').textContent=tasks.length;
+  document.getElementById('tp').textContent=tasks.length-done;
+  document.getElementById('td').textContent=done;
+  const vis=tasks.filter(t=>tfState==='all'?true:tfState==='done'?t.done:!t.done);
+  const list=document.getElementById('tlist');
+  document.getElementById('tempty').style.display=vis.length===0?'block':'none';
+  list.innerHTML='';
+  vis.forEach(t=>{
+    const li=document.createElement('li');
+    li.className='ti'+(t.done?' done':'');
+    li.innerHTML=`<button class="ti-ck" onclick="tToggle(${t.id})">${t.done?'✓':''}</button>
+      <span class="ti-text" onclick="tToggle(${t.id})">${t.text}</span>
+      <button class="ti-del" onclick="tRemove(${t.id})">✕</button>`;
+    list.appendChild(li);
+  });
+}
+
+/*====================================================
+  CONTACT FORM
+====================================================*/
+function sendMsg(){
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  if(!n||!e||!m){alert('Please fill all fields!');return;}
+  const btn=document.getElementById('fsend');
+  btn.textContent='✅ Sent!';btn.style.opacity='.7';
+  document.getElementById('fsuccess').style.display='block';
+  setTimeout(()=>{btn.textContent='Send Message 🚀';btn.style.opacity='1';},3000);
+}
+</script>
+</body>
+</html>
